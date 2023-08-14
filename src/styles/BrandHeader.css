@@ -1,0 +1,17 @@
+.BrandNav{
+    background-color: #3498db;
+    padding: 1rem;
+}
+.BrandHeader {
+    list-style-type: none;
+}
+.BrandHeader>li{
+    padding: 0.3rem 0.7rem;
+    transition: 0.3s;
+    border-radius: 3px;
+}
+.BrandHeader> li:hover{
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+}

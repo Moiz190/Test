@@ -1,0 +1,17 @@
+.AdminNav{
+    background-color: #3498db;
+    padding: 1rem;
+}
+.AdminHeader {
+    list-style-type: none;
+}
+.AdminHeader>li{
+    padding: 0.3rem 0.7rem;
+    transition: 0.3s;
+    border-radius: 3px;
+}
+.AdminHeader> li:hover{
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+}
