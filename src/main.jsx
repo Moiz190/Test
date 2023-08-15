@@ -7,17 +7,19 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-import AdminLayout from "./layouts/Admin.jsx";
 import AdminHome from "./pages/Admin/AdminHome.jsx";
+import BrandHome from './pages/Brand/BrandHome.jsx'
+import BrandServices from './pages/Brand/BrandServices.jsx'
+import BrandAbout from './pages/Brand/BrandAbout.jsx'
 import AdminPortfolio from "./pages/Admin/AdminPortfolio.jsx";
 import AdminContact from "./pages/Admin/AdminContact.jsx";
 import AdminServices from "./pages/Admin/AdminServices.jsx";
 import AdminAbout from "./pages/Admin/AdminAbout.jsx";
 import AuthChecker from "./components/AuthChecker.jsx";
-import BrandLayout from "./layouts/Brand.jsx";
 import Login from "./components/Login.jsx";
 import store from './store/index.js'
 import { Provider } from "react-redux";
+import { MainLayout } from "./layouts/MainLayout.jsx";
 const Routes = createBrowserRouter([
   {
     path: "/",
@@ -25,7 +27,7 @@ const Routes = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <AdminLayout />,
+    element: <MainLayout />,
     children: [
       {
         path: "",
@@ -55,7 +57,7 @@ const Routes = createBrowserRouter([
   },
   {
     path: "/brand",
-    element: <BrandLayout />,
+    element: <MainLayout />,
     children: [
       {
         path: "",
@@ -63,23 +65,15 @@ const Routes = createBrowserRouter([
       },
       {
         path: "home",
-        element: <AdminHome />,
-      },
-      {
-        path: "portfolio",
-        element: <AdminPortfolio />,
-      },
-      {
-        path: "contact",
-        element: <AdminContact />,
+        element: <BrandHome />,
       },
       {
         path: "services",
-        element: <AdminServices />,
+        element: <BrandServices />,
       },
       {
-        path: "about",
-        element: <AdminAbout />,
+        path: "About",
+        element: <BrandAbout />,
       },
     ],
   },
