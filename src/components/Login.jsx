@@ -25,12 +25,17 @@ export default function Login() {
       setLoginCreds((oldVal) => ({ ...oldVal, isAuthenticated: true }));
       if (email === "admin@gmail.com" && password === "123") {
         localStorage.setItem('user','admin')
-        navigate('/admin')
+        navigate('/admin/home')
       }
-    } else {
+      else if(email === "brand@gmail.com" && password === "123"){
+        console.log('brand')
+        localStorage.setItem('user','brand')
+        navigate('/brand/home')
+      }
+    }
+     else {
       setLoginCreds((oldVal) => ({ ...oldVal, isAuthenticated: false }));
     }
-    console.log(loginCreds)
   };
   return (
     <div className="grid grid-cols-1 bg-[url('src/assets/loginPageBg.jpg')] bg-center bg-cover lg:grid-cols-2 justify-center items-center h-full p-2">

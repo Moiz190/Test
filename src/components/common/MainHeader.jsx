@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
-import "../../styles/AdminHeader.css";
+import { Link, useNavigate } from "react-router-dom";
 import { useMemo, useState } from "react";
-export const AdminHeader = () => {
-  const [role,setRole] = useState("admin");
+import '../../styles/MainHeader.css'
+export const MainHeader = () => {
+  const activeRole = localStorage.getItem('user')
   const [selectedNavs, setSelectedNavs] = useState([]);
+  const navigate = useNavigate()
   const adminNav = [
     {
       title:'Home',
@@ -41,25 +42,22 @@ export const AdminHeader = () => {
     },
   ]
   useMemo(()=>{
-    if(role === 'admin'){
+    if(activeRole === 'admin'){
       setSelectedNavs(adminNav)
     }
     else{
       setSelectedNavs(brandNav)
     }
-  },[role])
-  const handleSwitchRoles = ()=>{
-    if(role === 'admin'){
-      setRole('brand')
-    }
-    else{
-      setRole('admin')
-    }
+  },[activeRole])
+  const handleLogout = ()=>{
+    localStorage.removeItem('user')
+    localStorage.removeItem('password')
+    navigate('/login')
   }
   return (
     <nav className="AdminNav flex justify-between">
-      <h2 className="text-white">{role === 'admin' ? 'Admin' : 'Brand'}</h2>
-      <button onClick={handleSwitchRoles}>Switch to {role}</button>
+      <h2 className="text-white">{activeRole === 'admin' ? 'Admin' : 'Brand'}</h2>
+      <button onClick={handleLogout}>Logout</button>
       <ul className="AdminHeader text-white flex items-center gap-4">
         {
           selectedNavs.map(nav=>(
@@ -70,4 +68,4 @@ export const AdminHeader = () => {
     </nav>
   );
 };
-export default AdminHeader;
+export default MainHeader
