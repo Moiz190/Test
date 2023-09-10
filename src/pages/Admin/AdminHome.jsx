@@ -29,12 +29,19 @@ export const AdminHome = () => {
     },
     [todosList, searchedValue]
   );
+  const handleFileChange = (file)=>{
+      const form = new FormData()
+      form.append('File',file)
+      axios.post()
+
+  }
   return (
     <div className="px-2 py-4">
       {isLoading ? (
         <div className="text-center"><CircularProgress color="primary" /></div>
       ) : (
         <div>
+          <input type="file" accept=".png ,.jpeg , .jpg" onChange={(e)=>handleFileChange(e.target.files)}/>
           <div className="flex justify-center gap-1">
             <TextField
               variant="outlined"
@@ -44,7 +51,7 @@ export const AdminHome = () => {
             />
           </div>
           <div
-            className={`pa-1 grid ${
+            className={`pa-1 grid  cursor-pointer ${
               filteredTodos.length ? "grid-cols-4" : "grid-cols-1"
             } gap-1`}
           >

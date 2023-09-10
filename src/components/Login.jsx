@@ -13,12 +13,6 @@ export default function Login() {
     password:false
   })
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  //   if (user) {
-  //   if (user === "admin") {
-  //     return <Navigate to="/admin" />;
-  //   }
-  //   return <Navigate to="/brand" />;
-  // }
   const handleLogin = () => {
     const { email, password } = loginCreds;
     if (email && password) {
@@ -28,7 +22,6 @@ export default function Login() {
         navigate('/admin/home')
       }
       else if(email === "brand@gmail.com" && password === "123"){
-        console.log('brand')
         localStorage.setItem('user','brand')
         navigate('/brand/home')
       }
@@ -38,7 +31,7 @@ export default function Login() {
     }
   };
   return (
-    <div className="grid grid-cols-1 bg-[url('src/assets/loginPageBg.jpg')] bg-center bg-cover lg:grid-cols-2 justify-center items-center h-full p-2">
+    <div className="grid grid-cols-1 bg-[url('/assets/login.jpg')] bg-center bg-cover lg:grid-cols-2 justify-center items-center h-full p-2">
       <div className="hidden lg:block"></div>
       <Card
         variant="outlined"

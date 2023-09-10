@@ -6,7 +6,9 @@ import MainHeader from "../components/common/MainHeader";
 export const MainLayout = () => {
   return (
     <div className="grid grid-cols-[250px_1fr] h-full max-h-[100%]">
-      <MainSidebar />
+      <div className="shadow-2xl min-h-screen">
+        <MainSidebar />
+      </div>
       <div className="bg-white text-black">
         <MainHeader />
         <Outlet />

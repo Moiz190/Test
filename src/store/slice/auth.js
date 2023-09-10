@@ -17,14 +17,7 @@ const authSlice = createSlice({
             localStorage.removeItem('password')
             state.isAuthenticated = false
         }
-    },
-    // extraReducers:(builder)=>{
-    //     builder.addCase(getTodoList.fulfilled, (state,action)=>{
-    //         const response = action.payload
-    //         console.log(response)
-    //         state.isAuthenticated = true
-    //     })
-    // }
+    }
 })
 export default authSlice.reducer
 export const {logout} = authSlice.actions;
