@@ -3,6 +3,7 @@ import { MainLayout } from "./layouts/MainLayout";
 import {
   createBrowserRouter,
   Navigate,
+  Route,
   RouterProvider,
 } from "react-router-dom";
 import AdminHome from "./pages/Admin/AdminHome.jsx";
@@ -19,7 +20,7 @@ function App() {
   const Routes = createBrowserRouter([
     {
       path: "/",
-      element: <AuthChecker />,
+    element: <AuthChecker />,
     },
     {
       path: "/admin",
@@ -84,10 +85,21 @@ function App() {
     },
   ]);
   return (
-    <div className='h-full'>
-      <RouterProvider router={Routes}></RouterProvider>
+    <div className="h-full">
+      <RouterProvider router={Routes}>
+        <Route path="/admin/*" element={<ProtectedRoutes userType="admin" />} />
+        <Route path="/brand/*" element={<ProtectedRoutes userType="brand" />} />
+      </RouterProvider>
     </div>
   );
 }
 
 export default App;
+export const ProtectedRoutes = ({ userType }) => {
+  const user = localStorage.getItem("user");
+  if (user === userType) {
+    return <Navigate to={`/${userType}/`} />;
+  } else {
+    return <Navigate to={"/login"} />;
+  }
+};

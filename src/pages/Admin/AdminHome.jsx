@@ -133,7 +133,7 @@ export const AdminHome = () => {
                   key={pageIndex}
                   onClick={() => setCurrentPage(pageIndex + 1)}
                   className={`text-center w-10 flex justify-center items-center rounded-md cursor-pointer bg-gray-200 ${
-                    currentPage === pageIndex + 1 && "bg-blue-500 text-white"
+                    currentPage === pageIndex + 1 && "!bg-blue-500 text-white"
                   }`}
                 >
                   {pageIndex + 1}
