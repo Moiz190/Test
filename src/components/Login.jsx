@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, CardContent,Input } from "@mui/material";
 export default function Login() {
@@ -30,6 +30,13 @@ export default function Login() {
       setLoginCreds((oldVal) => ({ ...oldVal, isAuthenticated: false }));
     }
   };
+  useEffect(()=>{
+    document.addEventListener('keypress',(e)=>{
+      if(e.key === 'Enter' && loginCreds.email && loginCreds.password){
+        handleLogin()
+      }
+    })
+  },[])
   return (
     <div className="grid grid-cols-1 bg-[url('/assets/login.jpg')] bg-center bg-cover lg:grid-cols-2 justify-center items-center h-full p-2">
       <div className="hidden lg:block"></div>
